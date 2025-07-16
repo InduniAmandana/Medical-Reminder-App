@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/background"
+    tools:context=".SingupActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="271dp"
+            android:layout_height="103dp"
+            android:layout_marginTop="25dp"
+            android:padding="8dp"
+            android:text="Wellcome TO Sing Up"
+            android:textColor="@color/purple"
+            android:textSize="35dp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="110dp"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <EditText
+                android:id="@+id/singup_email"
+                android:layout_width="350dp"
+                android:layout_height="64dp"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/lavender_bordere"
+                android:drawableLeft="@drawable/baseline_email_24"
+                android:hint="Email"
+                android:padding="8dp" />
+
+            <EditText
+                android:id="@+id/singup_password"
+                android:layout_width="350dp"
+                android:layout_height="64dp"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/lavender_bordere"
+                android:drawableLeft="@drawable/baseline_screen_lock_portrait_24"
+                android:hint="password"
+                android:inputType="textPassword"
+                android:padding="8dp"
+                android:autofillHints="" />
+
+            <EditText
+                android:id="@+id/singup_comfirm"
+                android:layout_width="350dp"
+                android:layout_height="64dp"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/lavender_bordere"
+                android:drawableLeft="@drawable/password"
+                android:hint="confirm password"
+                android:inputType="textPassword"
+                android:padding="8dp" />
+
+            <Button
+                android:id="@+id/singup_button"
+                android:layout_width="350dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="30dp"
+                android:text="Sign Up"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/loginRedirectText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="8dp"
+                android:padding="8dp"
+                android:text="Already an users?Login"
+                android:textColor="@color/lavender"
+                android:textSize="13dp" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</ScrollView>

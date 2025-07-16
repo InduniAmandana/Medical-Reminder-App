@@ -1,0 +1,41 @@
+<resources>
+    <string name="app_name">medical_app_s92075608</string>
+    <string name="pd">Password</string>
+    <string name="email">Email</string>
+    <string name="login">Login</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="title_activity_maps">MapsActivity</string>
+    <string name="YOUR_API_KEY">AIzaSyA1kgcbQGXmmMCwszG_zYichz3-hXNFrzQ</string>
+    <string name="congrats_you_have_completed_the_task_successfully">Well Done!... You have completed the medication task successfully..</string>
+
+    <string name="delete_confirmation">Confirmation</string>
+    <string name="sureToDelete">Are you sure you want to delete the Medication</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="confirmation">Completed the task!..</string>
+    <string name="sureToMarkAsComplete">Are you sure you want to mark this Medication as completed.</string>
+    <string name="title_activity_main4">MainActivity4</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="search_place">Search Place</string>
+
+    <string name="edit_profile_data">Edit Profile Data</string>
+    <string name="update_profile_pic">Update Profile Pic</string>
+    <string name="update_name">Update Name</string>
+    <string name="change_password">Change Password</string>
+    <string name="health_care_app">Health Care App</string>
+    <string name="medical_reminder">Medical Reminder</string>
+    <string name="reminder">Reminder</string>
+    <string name="exercise">Exercise</string>
+    <string name="health_instruction">Health Instruction</string>
+    <string name="instruction_for_health">Instruction for a Healthy Life</string>
+    <string name="profile">Profile</string>
+    <string name="todo">TODO</string>
+
+</resources>

@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "112003537174",
+    "firebase_url": "https://editprofile-ed05b-default-rtdb.firebaseio.com",
+    "project_id": "editprofile-ed05b",
+    "storage_bucket": "editprofile-ed05b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:112003537174:android:372757834a6b8cd74c1837",
+        "android_client_info": {
+          "package_name": "com.s92075608.medical_app_s92075608"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCzsluB4bMQg5Cre1mDYVIrroarz6jNOKQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

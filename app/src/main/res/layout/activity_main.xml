@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/white"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="383dp"
+        android:layout_height="80dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="84dp"
+        android:layout_marginEnd="12dp"
+        android:padding="8dp"
+        android:text="@string/health_care_app"
+        android:textAlignment="center"
+        android:textColor="@color/purple"
+        android:textSize="40sp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="480dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="178dp"
+        android:orientation="vertical">
+
+        <ImageButton
+            android:id="@+id/medicalReminderButton"
+            android:layout_width="130dp"
+            android:layout_height="150dp"
+            android:layout_gravity="center"
+            android:background="@null"
+            android:contentDescription="@string/medical_reminder"
+            android:padding="8dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/remember"
+            android:textAlignment="center" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="138dp"
+            android:layout_height="26dp"
+            android:layout_gravity="center"
+            android:text="@string/reminder"
+            android:textAlignment="center"
+            android:textColor="#060E39"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <ImageButton
+            android:id="@+id/exerciseButton"
+            android:layout_width="150dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="15dp"
+            android:background="@null"
+            android:contentDescription="@string/exercise"
+            android:padding="2dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/exercise" />
+
+        <TextView
+            android:layout_width="108dp"
+            android:layout_height="26dp"
+            android:layout_gravity="center"
+            android:text="@string/exercise"
+            android:textAlignment="center"
+            android:textColor="#060E39"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <ImageButton
+            android:id="@+id/healthInstructionButton"
+            android:layout_width="120dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="15dp"
+            android:background="@null"
+            android:contentDescription="@string/health_instruction"
+            android:scaleType="fitCenter"
+            android:src="@drawable/instruction" />
+
+        <TextView
+            android:layout_width="200dp"
+            android:layout_height="26dp"
+            android:layout_gravity="center"
+            android:text="@string/instruction_for_health"
+            android:textAlignment="center"
+            android:textColor="#060E39"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/profileButton"
+        android:layout_width="60dp"
+        android:layout_height="61dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="15dp"
+        android:background="@color/white"
+        android:padding="2dp"
+        android:scaleType="fitCenter"
+        android:contentDescription="@string/profile"
+        app:srcCompat="@drawable/profile" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/profileButton"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="31dp"
+        android:text="@string/profile"
+        android:textAlignment="center"
+        android:textColor="#060E39"
+        android:textSize="10sp"
+        android:textStyle="bold" />
+
+</RelativeLayout>
