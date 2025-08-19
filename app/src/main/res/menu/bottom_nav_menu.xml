@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nav_walk"
+        android:title="Walk Count"
+        android:icon="@android:drawable/ic_menu_compass" />
+
+    <item
+        android:id="@+id/nav_maps"
+        android:title="Maps"
+        android:icon="@android:drawable/ic_menu_mapmode" />
+
+    <item
+        android:id="@+id/nav_instructions"
+        android:title="Instructions"
+        android:icon="@android:drawable/ic_menu_info_details" />
+
+    <item
+        android:id="@+id/nav_medicine"
+        android:title="View Medicine"
+        android:icon="@android:drawable/ic_menu_agenda" />
+
+</menu>

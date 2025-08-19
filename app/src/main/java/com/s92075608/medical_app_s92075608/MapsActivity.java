@@ -7,37 +7,48 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Toast;
 
 public class MapsActivity extends AppCompatActivity {
 
-    EditText sourceEditText, destinationEditText;
-    Button showMapButton;
-
+    Button btnFindPharmacy, btnFindPark, btnFindGym;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
 
-        sourceEditText = findViewById(R.id.sourceEditText);
-        destinationEditText = findViewById(R.id.destinationEditText);
-        showMapButton = findViewById(R.id.showMapButton);
+        // Buttons
+        btnFindPharmacy = findViewById(R.id.btnFindPharmacy);
+        btnFindPark = findViewById(R.id.btnFindPark);
+        btnFindGym = findViewById(R.id.btnFindGym);
 
-        showMapButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String sourceAddress = sourceEditText.getText().toString();
-                String destinationAddress = destinationEditText.getText().toString();
+        // Open nearest pharmacy
+        btnFindPharmacy.setOnClickListener(v ->
+                openMapWithQuery("pharmacy"));
 
-                // Launch Google Maps Activity with source and destination
-                Uri gmmIntentUri = Uri.parse("https://www.google.com/maps/dir/?api=1&origin=" +
-                        sourceAddress + "&destination=" + destinationAddress);
-                Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
-                mapIntent.setPackage("com.google.android.apps.maps");
-                startActivity(mapIntent);
-            }
-        });
+        // Open nearest park
+        btnFindPark.setOnClickListener(v ->
+                openMapWithQuery("park"));
+
+        // Open nearest gym
+        btnFindGym.setOnClickListener(v ->
+                openMapWithQuery("gym"));
+    }
+
+    private void openMapWithQuery(String query) {
+        // geo:0,0?q=<search term> opens nearby search
+        Uri gmmIntentUri = Uri.parse("geo:0,0?q=" + query);
+        Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+        mapIntent.setPackage("com.google.android.apps.maps");
+
+        // If Google Maps app available
+        if (mapIntent.resolveActivity(getPackageManager()) != null) {
+            startActivity(mapIntent);
+        } else {
+            // Fallback: open Google Maps in browser
+            Uri browserUri = Uri.parse("https://www.google.com/maps/search/" + query);
+            Intent browserIntent = new Intent(Intent.ACTION_VIEW, browserUri);
+            startActivity(browserIntent);
+        }
     }
 }

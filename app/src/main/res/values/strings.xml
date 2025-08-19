@@ -37,5 +37,8 @@
     <string name="instruction_for_health">Instruction for a Healthy Life</string>
     <string name="profile">Profile</string>
     <string name="todo">TODO</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
 
 </resources>

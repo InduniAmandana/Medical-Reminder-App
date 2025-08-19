@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <item name="image" type="id" />
+    <item name="youtubePlayer1" type="id" />
+    <item name="titleInstructions" type="id" />
+    <item name="youtubePlayer2" type="id" />
+    <item name="youtubePlayer3" type="id" />
 </resources>
