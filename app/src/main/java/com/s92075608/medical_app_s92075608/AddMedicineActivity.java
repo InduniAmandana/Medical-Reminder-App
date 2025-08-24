@@ -29,13 +29,16 @@ import java.util.Calendar;
 
 public class AddMedicineActivity extends AppCompatActivity {
 
+    // UI input fields
     private EditText etName, etDose, etAmount;
     private Spinner spinnerType;
     private TextView tvDate, tvTime;
     private Switch switchReminder;
     private Button btnSave, btnViewAll;
 
-    private Calendar calReminder; // holds selected date+time
+    // to hold reminder date+time
+    private Calendar calReminder;
+    // access to database
     private MedicineDao dao;
 
     private static final String NOTIF_CHANNEL_ID = "med_channel";
@@ -48,6 +51,7 @@ public class AddMedicineActivity extends AppCompatActivity {
 
         dao = AppDatabase.getInstance(this).medicineDao();
 
+        // link xml items with variables
         etName = findViewById(R.id.etName);
         etDose = findViewById(R.id.etDose);
         etAmount = findViewById(R.id.etAmount);
@@ -58,25 +62,26 @@ public class AddMedicineActivity extends AppCompatActivity {
         btnSave = findViewById(R.id.btnSave);
         btnViewAll = findViewById(R.id.btnViewAll);
 
-        // spinner data
+        // add types of medicine to spinner dropdown
         spinnerType.setAdapter(new ArrayAdapter<>(
                 this,
                 android.R.layout.simple_spinner_dropdown_item,
                 new String[]{"Select Type", "Tablet", "Capsule", "Syrup", "Injection", "Drops"}));
 
+        // set click actions
         tvDate.setOnClickListener(v -> showDatePicker());
         tvTime.setOnClickListener(v -> showTimePicker());
         btnSave.setOnClickListener(v -> onSave());
         btnViewAll.setOnClickListener(v -> startActivity(new Intent(this, MedicineListActivity.class)));
 
-        // Notification channel for Android O+
+        // create notification channel (for android 8 and above)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             NotificationChannel ch = new NotificationChannel(
                     NOTIF_CHANNEL_ID, "Medicine Reminders", NotificationManager.IMPORTANCE_HIGH);
             getSystemService(NotificationManager.class).createNotificationChannel(ch);
         }
 
-        // Request notification permission on Android 13+
+        // ask permission for notification (for android 13 and above)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             if (checkSelfPermission(Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
                 requestPermissions(new String[]{Manifest.permission.POST_NOTIFICATIONS}, REQ_POST_NOTIF);
@@ -84,6 +89,7 @@ public class AddMedicineActivity extends AppCompatActivity {
         }
     }
 
+    // show calendar for selecting date
     private void showDatePicker() {
         Calendar now = Calendar.getInstance();
         new DatePickerDialog(this, (view, y, m, d) -> {
@@ -95,6 +101,7 @@ public class AddMedicineActivity extends AppCompatActivity {
         }, now.get(Calendar.YEAR), now.get(Calendar.MONTH), now.get(Calendar.DAY_OF_MONTH)).show();
     }
 
+    // show clock for selecting time
     private void showTimePicker() {
         Calendar now = Calendar.getInstance();
         new TimePickerDialog(this, (view, h, min) -> {
@@ -107,12 +114,14 @@ public class AddMedicineActivity extends AppCompatActivity {
         }, now.get(Calendar.HOUR_OF_DAY), now.get(Calendar.MINUTE), true).show();
     }
 
+    // save medicine to database
     private void onSave() {
         String name = etName.getText().toString().trim();
         String dose = etDose.getText().toString().trim();
         String amountStr = etAmount.getText().toString().trim();
         String type = spinnerType.getSelectedItem().toString();
 
+        // check if fields are empty
         if (name.isEmpty() || dose.isEmpty() || amountStr.isEmpty() || "Select Type".equals(type)) {
             Toast.makeText(this, "Please fill all fields", Toast.LENGTH_SHORT).show();
             return;
@@ -128,6 +137,7 @@ public class AddMedicineActivity extends AppCompatActivity {
 
         boolean reminderOn = switchReminder.isChecked();
 
+        // if reminder is on but time not selected or past
         if (reminderOn) {
             if (calReminder == null) {
                 Toast.makeText(this, "Pick reminder date & time", Toast.LENGTH_SHORT).show();
@@ -139,6 +149,7 @@ public class AddMedicineActivity extends AppCompatActivity {
             }
         }
 
+        // create medicine object
         Medicine m = new Medicine();
         m.name = name;
         m.type = type;
@@ -148,15 +159,16 @@ public class AddMedicineActivity extends AppCompatActivity {
         m.reminderAt = reminderOn ? calReminder.getTimeInMillis() : 0;
 
         long newId = dao.insert(m);
-        m.id = (int) newId; // use id for unique PendingIntent
+        m.id = (int) newId; // assign db id
 
+        // schedule reminder notification
         if (reminderOn) {
             scheduleReminder(m.id, m.name, m.reminderAt);
         }
 
         Toast.makeText(this, "Saved (id: " + newId + ")", Toast.LENGTH_SHORT).show();
 
-        // reset form
+        // clear form for next input
         etName.setText("");
         etDose.setText("");
         etAmount.setText("");
@@ -167,13 +179,14 @@ public class AddMedicineActivity extends AppCompatActivity {
         calReminder = null;
     }
 
+    // method to schedule alarm for notification
     private void scheduleReminder(int uniqueId, String medName, long whenMillis) {
         Intent intent = new Intent(this, ReminderReceiver.class);
         intent.putExtra("name", medName);
 
         PendingIntent pi = PendingIntent.getBroadcast(
                 this,
-                uniqueId, // unique per medicine
+                uniqueId, // unique id so alarms don’t replace each other
                 intent,
                 PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE
         );
